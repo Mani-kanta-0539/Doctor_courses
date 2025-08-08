@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctor Career Paths</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            color: #222;
+            overflow-x: hidden;
+        }
+        header {
+            background: url('https://ik.imagekit.io/syustaging/SYU_PREPROD/Cover_EhB1OaHtI.webp?tr=w-3840') center/cover no-repeat;
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(67,206,162,0.2);
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            overflow: hidden;
+            height: 40vh;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(67,206,162,0.7) 0%, rgba(24,90,157,0.7) 100%);
+            z-index: 1;
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 2;
+        }
+        .typing {
+            display: inline-block;
+            border-right: 2px solid #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2.5s steps(30, end), blink-caret 0.7s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fff; }
+        }
+       
+    
+        .container {
+            width: 100vw;
+            max-width: 100vw;
+            margin: 2rem 0;
+            padding: 0;
+        }
+        .paths {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            width: 100vw;
+            margin: 0;
+        }
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(24,90,157,0.12);
+            width: 100vw;
+            max-width: 100vw;
+            padding: 2rem 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s;
+            box-sizing: border-box;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 16px 32px rgba(67,206,162,0.18);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #185a9d;
+            font-size: 1.4rem;
+        }
+        .card p {
+            color: #444;
+            font-size: 1rem;
+        }
+        .card .info-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.2rem;
+            background: #43cea2;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card .info-btn:hover {
+            background: #185a9d;
+        }
+        .hospitals {
+            margin-top: 3rem;
+            animation: fadeIn 1.5s;
+            width: 100vw;
+            margin-left: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+        .hospital-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            width: 100vw;
+            margin: 0;
+        }
+        .hospital {
+            background: #f7fafd;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(24,90,157,0.08);
+            padding: 1.2rem 1rem;
+            width: 100vw;
+            max-width: 100vw;
+            text-align: center;
+            transition: box-shadow 0.3s;
+            box-sizing: border-box;
+        }
+        .hospital:hover {
+            box-shadow: 0 8px 24px rgba(67,206,162,0.15);
+        }
+        .hospital h3 {
+            margin: 0 0 0.5rem 0;
+            color: #43cea2;
+            font-size: 1.1rem;
+        }
+        .hospital p {
+            margin: 0;
+            color: #444;
+            font-size: 0.95rem;
+        }
+        footer {
+            background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+            color: #fff;
+            text-align: center;
+            padding: 1.2rem 0;
+            font-size: 1rem;
+            margin-top: 3rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 -2px 12px rgba(67,206,162,0.12);
+            animation: fadeInFooter 1.2s;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        @keyframes fadeInFooter {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        /* Responsive */
+        @media (max-width: 800px) {
+            header { padding: 1.2rem 0 0.7rem 0; }
+            header h1 { font-size: 1.5rem; }
+            .paths { flex-direction: column; align-items: center;}
+            .card { width: 100vw;}
+            .hospital-list { flex-direction: column; align-items: center;}
+            .hospital { width: 100vw;}
+        }
+        /* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+.faq { margin-top:1.5rem;}
+        .faq-item { border-bottom:1px solid #cfdef3; }
+        .faq-question {
+            background:none;
+            border:none;
+            width:100%;
+            text-align:left;
+            font-size:1.08rem;
+            padding:1rem 0;
+            color:#185a9d;
+            font-weight:600;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            transition:background 0.2s;
+        }
+        .faq-question:hover { background:#f7fafd; }
+        .faq-arrow {
+            font-size:1.2rem;
+            transition:transform 0.2s;
+            margin-left:10px;
+        }
+        .faq-answer {
+            display:none;
+            padding:0.7rem 0 1rem 0.5rem;
+            color:#444;
+            font-size:1rem;
+            animation:fadeIn 0.4s;
+        }
+        </style>
+</head>
+<body>
+    <header>
+        <h1>Doctor Career Paths</h1>
+        <p>Explore exciting medical careers and top hospitals</p>
+    </header>
+    <div class="container">
+        <section class="paths">
+            <div class="card" data-info="General physicians diagnose and treat common illnesses, provide preventive care, and refer patients to specialists.">
+                <h2>General Physician</h2>
+                <p>Primary care doctors for all ages, focusing on diagnosis and treatment of common diseases.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+            <div class="card" data-info="Surgeons perform operations to treat injuries, diseases, and deformities. They specialize in areas like cardiac, neuro, or orthopedic surgery.">
+                <h2>Surgeon</h2>
+                <p>Specialists in performing surgeries, ranging from minor procedures to complex operations.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+            <div class="card" data-info="Pediatricians care for infants, children, and adolescents, monitoring growth and development and treating childhood illnesses.">
+                <h2>Pediatrician</h2>
+                <p>Doctors specializing in children's health, growth, and development.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+            <div class="card" data-info="Cardiologists diagnose and treat heart and blood vessel conditions, including heart attacks, arrhythmias, and hypertension.">
+                <h2>Cardiologist</h2>
+                <p>Experts in heart health, treating cardiovascular diseases and conditions.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+            <div class="card" data-info="Psychiatrists treat mental health disorders using therapy and medication, helping patients manage conditions like depression, anxiety, and schizophrenia.">
+                <h2>Psychiatrist</h2>
+                <p>Medical doctors specializing in mental health and psychiatric disorders.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+            <div class="card" data-info="Radiologists use imaging techniques like X-rays, CT scans, and MRIs to diagnose and sometimes treat diseases.">
+                <h2>Radiologist</h2>
+                <p>Experts in medical imaging for diagnosis and treatment planning.</p>
+                <button class="info-btn">More Info</button>
+            </div>
+        </section>
+        
+            <h2 style="text-align:center; color:#185a9d;">Top Hospitals</h2><div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="https://www.haryanadcratejob.com/wp-content/uploads/2025/04/AIIMS-New-Delhi-Vacancy-2025.webp" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="https://i.ytimg.com/vi/z4desdPmB48/maxresdefault.jpg" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXdC7cTjYs4M8r3X-qTaTCSpv_caozIgww-N4ZatsaId_D8yMLLOTAqlgYCyjZlBJ_b40lJ6Cm-zIp5MVUyqC5ffaLqLvh2m13ZDcoHb9aMEHrpVpx7p8zIUPpcUhoDKekFj2Kjj?key=D9mSfCvShGuFL3XnadO1L89K" style="width:100%">
+  <div class="text"></div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+
+</div>
+        
+       
+            </div>
+        </section>
+    <section style="max-width:700px;margin:2rem auto;"></section>
+        <h2 style="text-align:center;color:#185a9d;">Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <button class="faq-question">
+                    What qualifications are needed to become a doctor?
+                    <span class="faq-arrow">&#9654;</span>
+                </button>
+                <div class="faq-answer">
+                    To become a doctor, you typically need to complete an undergraduate degree, medical school, and residency training. Licensing exams are also required.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    How long does it take to specialize in a medical field?
+                    <span class="faq-arrow">&#9654;</span>
+                </button>
+                <div class="faq-answer">
+                    Specializing usually takes 3-7 additional years after medical school, depending on the specialty and country.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is the difference between a general physician and a specialist?
+                    <span class="faq-arrow">&#9654;</span>
+                </button>
+                <div class="faq-answer">
+                    General physicians provide primary care for common illnesses, while specialists focus on specific areas like cardiology, surgery, or pediatrics.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Are doctors required to continue education after graduation?
+                    <span class="faq-arrow">&#9654;</span>
+                </button>
+                <div class="faq-answer">
+                    Yes, doctors must participate in continuing medical education to stay updated on medical advances and maintain their licenses.
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    What are the career prospects for doctors in India?
+                    <span class="faq-arrow">&#9654;</span>
+                </button>
+                <div class="faq-answer">
+                    Doctors in India have diverse opportunities in hospitals, clinics, research, teaching, and public health, with high demand in both urban and rural areas.
+                </div>
+            </div>
+        </div>
+    </section>
+     <footer>
+            &copy; 2024 Doctor Career Paths. All rights reserved.
+        </footer>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.onclick = function() {
+                const answer = btn.nextElementSibling;
+                const arrow = btn.querySelector('.faq-arrow');
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                    document.querySelectorAll('.faq-arrow').forEach(ar => ar.style.transform = 'rotate(0deg)');
+                    answer.style.display = 'block';
+                    arrow.style.transform = 'rotate(90deg)';
+                }
+            };
+        });
+
+        let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+        // Animation for cards on scroll
+        const cards = document.querySelectorAll('.card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s';
+                }
+            });
+        }, { threshold: 0.2 });
+        cards.forEach(card => observer.observe(card));
+
+        // Modal logic
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const modalClose = document.getElementById('modal-close');
+        document.querySelectorAll('.info-btn').forEach((btn, idx) => {
+            btn.addEventListener('click', e => {
+                const card = btn.parentElement;
+                modalTitle.textContent = card.querySelector('h2').textContent;
+                modalContent.textContent = card.getAttribute('data-info');
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        modalClose.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+        window.onclick = e => {
+            if(e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        };
+    </script>
+</body>
+</html>
