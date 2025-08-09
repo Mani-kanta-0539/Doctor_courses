@@ -313,32 +313,80 @@
                 <h2>General Physician</h2>
                 <p>Primary care doctors for all ages, focusing on diagnosis and treatment of common diseases.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
             <div class="card" data-info="Surgeons perform operations to treat injuries, diseases, and deformities. They specialize in areas like cardiac, neuro, or orthopedic surgery.">
                 <h2>Surgeon</h2>
                 <p>Specialists in performing surgeries, ranging from minor procedures to complex operations.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
             <div class="card" data-info="Pediatricians care for infants, children, and adolescents, monitoring growth and development and treating childhood illnesses.">
                 <h2>Pediatrician</h2>
                 <p>Doctors specializing in children's health, growth, and development.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
             <div class="card" data-info="Cardiologists diagnose and treat heart and blood vessel conditions, including heart attacks, arrhythmias, and hypertension.">
                 <h2>Cardiologist</h2>
                 <p>Experts in heart health, treating cardiovascular diseases and conditions.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
             <div class="card" data-info="Psychiatrists treat mental health disorders using therapy and medication, helping patients manage conditions like depression, anxiety, and schizophrenia.">
                 <h2>Psychiatrist</h2>
                 <p>Medical doctors specializing in mental health and psychiatric disorders.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
             <div class="card" data-info="Radiologists use imaging techniques like X-rays, CT scans, and MRIs to diagnose and sometimes treat diseases.">
                 <h2>Radiologist</h2>
                 <p>Experts in medical imaging for diagnosis and treatment planning.</p>
                 <button class="info-btn">More Info</button>
+                <div class="card-info" style="display:none;"></div>
             </div>
+        </section>
+        <script>
+        document.querySelectorAll('.info-btn').forEach(btn => {
+            btn.onclick = function() {
+                const card = btn.parentElement;
+                const infoDiv = card.querySelector('.card-info');
+                if (infoDiv.style.display === 'block') {
+                    infoDiv.style.animation = 'fadeOutDown 0.4s';
+                    setTimeout(() => {
+                        infoDiv.style.display = 'none';
+                    }, 350);
+                } else {
+                    document.querySelectorAll('.card-info').forEach(div => {
+                        div.style.display = 'none';
+                    });
+                    infoDiv.textContent = card.getAttribute('data-info');
+                    infoDiv.style.display = 'block';
+                    infoDiv.style.animation = 'fadeInDown 0.4s';
+                }
+            };
+        });
+        </script>
+        <style>
+        .card-info {
+            background: #f7fafd;
+            border-radius: 10px;
+            margin-top: 1rem;
+            padding: 1rem;
+            color: #185a9d;
+            font-size: 1rem;
+            box-shadow: 0 2px 8px rgba(67,206,162,0.08);
+            animation: fadeInDown 0.4s;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeOutDown {
+            from { opacity: 1; transform: translateY(0);}
+            to { opacity: 0; transform: translateY(20px);}
+        }
+        </style>
         </section>
         
             <h2 style="text-align:center; color:#185a9d;">Top Hospitals</h2><div class="slideshow-container">
